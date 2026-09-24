@@ -3,9 +3,11 @@ from src.models.pedido import Pedido
 from src.controllers.pedido_controller import PedidoController
 from src.services.pedido_service import PedidoService
 from src.repositories.pedido_repository import PedidoRepository
+from src.database.connection import DatabaseConnection
 
 if __name__ == "__main__":
-    repo = PedidoRepository()
+    database = DatabaseConnection()
+    repo = PedidoRepository(database)
     service = PedidoService(repo)
     controller = PedidoController(service)
 
