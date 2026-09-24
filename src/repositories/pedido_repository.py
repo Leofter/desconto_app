@@ -8,7 +8,7 @@ class PedidoRepository:
         self.database = database
 
     def adicionar_pedido(self, pedido: Pedido):
-        self.database.append(pedido)
+        self.database.pedidos.append(pedido)
 
     def listar_pedidos(self):
         return self.database.pedidos
