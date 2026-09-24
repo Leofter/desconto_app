@@ -1,10 +1,13 @@
 from src.models.desconto import DescontoPremium, DescontoVIP, DescontoNormal
 from src.models.pedido import Pedido
+from src.controllers.pedido_controller import PedidoController
 from src.services.pedido_service import PedidoService
 from src.repositories.pedido_repository import PedidoRepository
 
 if __name__ == "__main__":
     repo = PedidoRepository()
+    service = PedidoService(repo)
+    controller = PedidoController(service)
 
     pedido1 = Pedido("Leo", DescontoNormal())
     pedido1.valor_original = 50
@@ -15,12 +18,8 @@ if __name__ == "__main__":
     pedido3 = Pedido("Nino", DescontoPremium())
     pedido3.valor_original = 50
 
-    repo.adicionar_pedido(pedido1)
-    repo.adicionar_pedido(pedido2)
-    repo.adicionar_pedido(pedido3)
+    controller.adicionar_pedido(pedido1)
+    controller.adicionar_pedido(pedido2)
+    controller.adicionar_pedido(pedido3)
 
-    pedidos = repo.listar_pedidos()
-
-    for pedido in pedidos:
-        print(f"cliente: {pedido.cliente}")
-        print(f"Valor final: {pedido.valor_final(pedido.valor_original)}")
+    controller.processar_pedidos()
