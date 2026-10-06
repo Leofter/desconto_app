@@ -15,10 +15,10 @@ if __name__ == "__main__":
     pedido1.valor_original = 50
 
     pedido2 = Pedido("Bia", DescontoVIP())
-    pedido2.valor_original = 50
+    pedido2.valor_original = 60
 
     pedido3 = Pedido("Nino", DescontoPremium())
-    pedido3.valor_original = 50
+    pedido3.valor_original = 70
 
     controller.adicionar_pedido(pedido1)
     controller.adicionar_pedido(pedido2)
